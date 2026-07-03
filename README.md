@@ -34,8 +34,34 @@ Three pages, plain HTML + CSS. No framework, no build step, no JavaScript.
 `python -m http.server 8720` from this folder (also configured in `.claude/launch.json`),
 or just open `index.html` in a browser.
 
-## Deploying
+## Publishing cheat sheet
 
-Any static host: GitHub Pages, Netlify, Cloudflare Pages. Upload everything except
-`.claude/` and `README.md` (harmless if included). OG tags assume the site lives at
-`https://www.philliplicause.com` — update them if the domain differs.
+Live at https://www.philliplicause.com — GitHub (baewater/personal-website) → Netlify
+auto-deploys `main` on every push. Push = upload to GitHub. Pull = download from GitHub.
+
+Every session starts with:
+
+    cd "C:\Users\pmlic\Claude\Claude Code\Personal Website"
+
+**Everyday updates (push straight to main):**
+
+    git switch main          # make sure you're on main
+    git pull                 # sync down anything new (usually "Already up to date")
+    ...make edits...
+    git status               # see what changed
+    git add .                # stage it
+    git commit -m "What and why"
+    git push                 # publish — live on Netlify in ~1 minute
+
+**Bigger changes (pull request route):**
+
+    git switch -c my-change-name        # new branch
+    ...edit, git add ., git commit...
+    git push -u origin my-change-name   # upload branch
+    # open the printed URL, create the PR, merge it on GitHub, then:
+    git switch main
+    git pull                            # bring the merge back down
+
+**If something looks weird:** `git status` first — it shows your branch and changes.
+"not a git repository" means you're in the wrong folder. Site not updating? Check the
+Deploys tab in Netlify.
