@@ -1,0 +1,337 @@
+/* ============================================
+   PhillipLicause.com — design system
+   Sleek, modern, dark. Blues and whites.
+   The writing is the product.
+   ============================================ */
+
+:root {
+  /* Color */
+  --bg: #0a1020;            /* deep blue-black */
+  --line: rgba(140, 170, 220, 0.14);
+  --text: #e8eef7;          /* primary reading white */
+  --text-soft: #9fb0c8;     /* secondary / muted slate */
+  --accent: #5b9dff;        /* primary blue */
+  --accent-soft: #8fbcff;   /* hover / highlights */
+
+  /* Type */
+  --font-ui: "Inter", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+
+  /* Layout */
+  --measure: 42rem;         /* reading column */
+  --space: clamp(1.25rem, 4vw, 2rem);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  background-image: radial-gradient(
+    ellipse 80% 50% at 50% -20%,
+    rgba(91, 157, 255, 0.09),
+    transparent
+  );
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Header / nav ---------- */
+
+.site-header {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 2rem var(--space) 0;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.1rem;
+  font-size: 0.9rem;
+}
+
+.nav-links a {
+  color: var(--text-soft);
+  text-decoration: none;
+  padding: 0.15rem 0;
+  border-bottom: 1px solid transparent;
+  transition: color 120ms ease;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+.nav-links a.active {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- Main column ---------- */
+
+main {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: clamp(3rem, 8vw, 5rem) var(--space) 4rem;
+}
+
+/* Wider container for the homepage hero: gives the statement
+   and photo room to sit side by side comfortably */
+main.wide { max-width: 56rem; }
+
+/* ---------- Typography ---------- */
+
+h1, h2 {
+  font-family: var(--font-ui);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+h1 {
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  font-weight: 650;
+  margin: 0 0 1rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 2.75rem 0 0.75rem;
+}
+
+p { margin: 0 0 1.25rem; }
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(91, 157, 255, 0.35);
+  text-underline-offset: 3px;
+  transition: color 120ms ease;
+}
+
+a:hover {
+  color: var(--accent-soft);
+  text-decoration-color: var(--accent-soft);
+}
+
+.kicker {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.75rem;
+}
+
+.lede {
+  font-size: 1.2rem;
+  line-height: 1.65;
+  color: var(--text-soft);
+}
+
+.muted { color: var(--text-soft); }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 3rem 0;
+}
+
+blockquote {
+  margin: 2.5rem 0;
+  padding: 0 0 0 1.5rem;
+  border-left: 2px solid var(--accent);
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  line-height: 1.5;
+  font-style: italic;
+  color: var(--text);
+}
+
+blockquote p { margin: 0; }
+
+/* ---------- Homepage hero ---------- */
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.hero .landing { flex: 1; }
+
+/* Landing statement: one continuous headline, single size */
+.landing {
+  font-size: clamp(1.25rem, 3vw, 1.55rem);
+  font-weight: 650;
+  line-height: 1.5;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+/* Headshot: monochrome portrait with a solid offset shadow box */
+.headshot {
+  display: block;
+  width: 170px;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 4px;
+  filter: grayscale(100%);
+  box-shadow: 14px 14px 0 rgba(91, 157, 255, 0.65);
+}
+
+/* Stack the hero on small screens: photo above the statement */
+@media (max-width: 700px) {
+  .hero {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+}
+
+/* ---------- Essays ---------- */
+
+.prose {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  line-height: 1.75;
+}
+
+.prose p { margin: 0 0 1.4rem; }
+
+.prose h2 {
+  font-family: var(--font-ui);
+  margin-top: 3rem;
+}
+
+.essay-meta {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  margin: 0 0 3rem;
+}
+
+.item-list {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+}
+
+.item-list li {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.item-list li:last-child { border-bottom: 1px solid var(--line); }
+
+.item-list h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+}
+
+.item-list h2 a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.item-list h2 a:hover { color: var(--accent-soft); }
+
+.item-list p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.98rem;
+}
+
+/* Essay hook excerpt: the opening lines of the essay itself,
+   fading out toward the end to pull the reader in */
+.essay-excerpt {
+  -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+}
+
+.essays-note { margin-top: 2rem; }
+
+/* ---------- Buttons ---------- */
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 550;
+  text-decoration: none;
+  transition: all 140ms ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #08101f;
+}
+
+.btn-primary:hover {
+  background: var(--accent-soft);
+  color: #08101f;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 3rem var(--space) 3.5rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-heading {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--text);
+  margin: 0;
+}
+
+.footer-email {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.footer-email:hover {
+  color: var(--accent-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.footer-social a {
+  color: var(--text-soft);
+  transition: color 120ms ease;
+}
+
+.footer-social a:hover { color: var(--accent-soft); }
+
+.footer-social svg {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
